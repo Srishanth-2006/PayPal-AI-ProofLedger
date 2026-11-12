@@ -1,0 +1,50 @@
+# Environment variables (Never commit sensitive credentials)
+.env
+.env.local
+.env.*.local
+*.env
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+.venv/
+venv/
+ENV/
+
+# Node & Frontend dependencies
+node_modules/
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Uploads & Temporary Database storage
+backend/uploads/*
+!backend/uploads/sample_hvac_pass.jpg
+!backend/uploads/sample_hvac_fail.jpg
+backend/data/*.db
+*.sqlite
+*.sqlite3
+
+# External downloads archive
+version_from_downloads/
+*.zip
+*.tar.gz
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
