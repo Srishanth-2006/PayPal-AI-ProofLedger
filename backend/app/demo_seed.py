@@ -186,3 +186,38 @@ def seed_demo_data():
         }
         save_milestone(m3)
         append_block("ESCROW_CREATED", ms3_id, {"title": m3["title"], "amount": 480.00, "status": "DRAFT"})
+
+    # Seed Milestone 4: ESCROW_LOCKED (Ready for Deficient / Rejection Flow Demonstration)
+    ms4_id = "ms-refrig-8805"
+    if not get_milestone(ms4_id):
+        m4 = {
+            "id": ms4_id,
+            "title": "Industrial Chiller Wiring & Pressure Calibration",
+            "description": "Critical cooling maintenance: terminal spade wiring and 65 PSI stable pressure verification.",
+            "amount": 350.00,
+            "currency": "USD",
+            "client_name": "CryoLogistics Cold Chain Inc.",
+            "client_email": "operations@cryologistics.test",
+            "contractor_name": "Apex Thermal Techs",
+            "contractor_email": "service@apexthermal.test",
+            "specifications": [
+                "Dual run capacitor wired with no exposed cut copper",
+                "Manifold gauge showing stable pressure between 60-70 PSI",
+                "Grounding terminal continuity verified"
+            ],
+            "auto_capture_on_pass": True,
+            "status": MilestoneStatus.ESCROW_LOCKED.value,
+            "paypal_order_id": "ORD-SANDBOX-8805A",
+            "paypal_authorization_id": "AUTH-SANDBOX-8805AUTH",
+            "paypal_capture_id": None,
+            "paypal_approval_url": "https://www.sandbox.paypal.com/checkoutnow?token=ORD-SANDBOX-8805A",
+            "created_at": "2026-11-11T11:00:00Z",
+            "updated_at": "2026-11-11T11:05:00Z"
+        }
+        save_milestone(m4)
+        append_block("ESCROW_CREATED", ms4_id, {"title": m4["title"], "amount": 350.00, "client": m4["client_name"]})
+        append_block("ESCROW_AUTHORIZED", ms4_id, {
+            "auth_id": m4["paypal_authorization_id"],
+            "amount": 350.00,
+            "hold": "ACTIVE_ESCROW_HOLD"
+        })

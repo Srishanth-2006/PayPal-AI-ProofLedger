@@ -35,6 +35,11 @@ backend/data/*.db
 *.sqlite
 *.sqlite3
 
+# Demo videos & temporary video frames (large binaries)
+demo_recording/
+*.webm
+*.mp4
+
 # External downloads archive
 version_from_downloads/
 *.zip
