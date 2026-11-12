@@ -385,6 +385,8 @@ Contractor Notes: {notes or 'None provided'}
                 parsed["evaluator_model"] = "OpenAI-GPT-4o-mini"
                 parsed["evaluated_at"] = datetime.now(timezone.utc).isoformat()
                 return AIVerdict(**parsed)
+            else:
+                print(f"[AIOracle] OpenAI returned {resp.status_code}: {resp.text}")
         return None
 
 ai_oracle = AIOracleService()
